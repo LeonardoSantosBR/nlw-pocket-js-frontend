@@ -23,7 +23,9 @@ export function CreateGoal() {
         <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <DialogTitle>Cadastrar meta</DialogTitle>
-            <X className="size-4" />
+            <DialogClose asChild>
+              <X className="size-4" />
+            </DialogClose>
           </div>
 
           <DialogDescription>
