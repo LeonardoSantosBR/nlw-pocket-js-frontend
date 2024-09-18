@@ -1,4 +1,4 @@
-type IsummaryData = {
+type SummaryResponse = {
   completed: number
   total: number
   goalsPerDay: Record<
@@ -11,7 +11,7 @@ type IsummaryData = {
   >
 }
 
-export async function GetSummary(): Promise<IsummaryData> {
+export async function getSummary(): Promise<SummaryResponse> {
   const response = await fetch('http://localhost:3333/summary')
   const data = await response.json()
 

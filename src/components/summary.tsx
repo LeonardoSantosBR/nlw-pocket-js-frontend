@@ -7,9 +7,8 @@ import { DialogTrigger } from './ui/dialog'
 import { InOrbitLogo } from './in-orbit-logo'
 import { Progress, ProgressIndicator } from './ui/progress-bar'
 import { Separator } from './ui/separator'
-import { OutlineButton } from './ui/outline-button'
 import { useQuery } from '@tanstack/react-query'
-import { GetSummary } from '../http/get-summary'
+import { getSummary } from '../http/get-summary'
 import { PendingGoals } from './pending-goals'
 
 dayjs.locale(ptBr)
@@ -17,7 +16,7 @@ dayjs.locale(ptBr)
 export function Summary() {
   const { data } = useQuery({
     queryKey: ['summary'],
-    queryFn: GetSummary,
+    queryFn: getSummary,
     staleTime: 1000 * 60,
   })
 
