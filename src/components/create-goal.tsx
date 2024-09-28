@@ -47,25 +47,25 @@ export function CreateGoal() {
               <Label htmlFor="title">Quantas vezes na semana?</Label>
               <RadioGroup>
                 <RadioGroupItem value="1">
-                  <span>1x na semana</span> <RadioGroupIndicator />
+                  <span>1x na semana 🥱</span> <RadioGroupIndicator />
                 </RadioGroupItem>
                 <RadioGroupItem value="2">
-                  <span>2x na semana</span> <RadioGroupIndicator />
+                  <span>2x na semana 🙂</span> <RadioGroupIndicator />
                 </RadioGroupItem>
                 <RadioGroupItem value="3">
-                  <span>3x na semana</span> <RadioGroupIndicator />
+                  <span>3x na semana 😎</span> <RadioGroupIndicator />
                 </RadioGroupItem>
                 <RadioGroupItem value="4">
-                  <span>4x na semana</span> <RadioGroupIndicator />
+                  <span>4x na semana 😜</span> <RadioGroupIndicator />
                 </RadioGroupItem>
                 <RadioGroupItem value="5">
-                  <span>5x na semana</span> <RadioGroupIndicator />
+                  <span>5x na semana 👏</span> <RadioGroupIndicator />
                 </RadioGroupItem>
                 <RadioGroupItem value="6">
-                  <span>6x na semana</span> <RadioGroupIndicator />
+                  <span>6x na semana 🤟</span> <RadioGroupIndicator />
                 </RadioGroupItem>
                 <RadioGroupItem value="7">
-                  <span>Todos os dias da semana.</span>
+                  <span>Todos os dias da semana 🔥</span>
                   <RadioGroupIndicator />
                 </RadioGroupItem>
               </RadioGroup>
