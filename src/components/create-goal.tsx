@@ -20,13 +20,28 @@ import {
   RadioGroupItem,
 } from "./ui/radio-group";
 
-export function CreateGoal() {
-  function handleCreateGoal(data: any) {}
+import { ICreateGoalRequest } from "../interfaces/ipost-goal";
+import { postGoal } from "../http/post-goal";
+import { useQueryClient } from "@tanstack/react-query";
 
-  const { register, control, handleSubmit, formState } = useForm({
+export function CreateGoal() {
+  const queryClient = useQueryClient();
+
+  const { register, control, handleSubmit, formState , reset} = useForm<ICreateGoalRequest>({
     resolver: zodResolver(createGoalSchema),
   });
 
+  async function handleCreateGoal(data: ICreateGoalRequest) {
+    await postGoal({
+      title: data.title,
+      desiredWeeklyFrequency: data.desiredWeeklyFrequency,
+    });
+
+    queryClient.invalidateQueries({ queryKey: ["summary"] });
+    queryClient.invalidateQueries({ queryKey: ["pending-goals"] });
+
+    reset()
+  }
 
   return (
     <DialogContent>
@@ -58,7 +73,7 @@ export function CreateGoal() {
                 placeholder="Praticar exercícios, meditar, etc..."
                 {...register("title")}
               />
-              {formState.errors.title && (  
+              {formState.errors.title && (
                 <p className="text-red-500 text-sm">
                   {typeof formState.errors.title.message === "string"
                     ? formState.errors.title.message
@@ -70,13 +85,14 @@ export function CreateGoal() {
               <Label htmlFor="title">Quantas vezes na semana?</Label>
 
               <Controller
+                defaultValue={1}
                 control={control}
                 name="desiredWeeklyFrequency"
                 render={({ field }) => {
                   return (
                     <RadioGroup
                       onValueChange={field.onChange}
-                      value={field.value}
+                      value={String(field.value)}
                     >
                       <RadioGroupItem value="1">
                         <span>1x na semana 🥱</span> <RadioGroupIndicator />
